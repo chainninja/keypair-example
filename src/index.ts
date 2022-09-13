@@ -3,6 +3,7 @@ import * as EthWallet from './EthWallet';
 import * as EthWallet2 from './EthWallet2';
 import * as sigUtil from '@metamask/eth-sig-util';
 import dotenv from "dotenv"
+import { Wallet } from '@ethersproject/wallet';
 
 dotenv.config()
 
@@ -60,4 +61,11 @@ const message = 'HelloWorld';
     signedMessage,
     // signedMessage2
   });
+
+
+  console.log("------------------------")
+  console.log("Ether JS encrypt and decrypt method")
+  const json = await ethWalletEtherJs1.encrypt("password")
+  const decryptedFromJson = await Wallet.fromEncryptedJson(json, "password");
+  console.log("EnDecrypted", {ethWalletEtherJs1: ethWalletEtherJs1.privateKey, decryptedFromJson: decryptedFromJson.privateKey})
 })()
