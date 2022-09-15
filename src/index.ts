@@ -7,16 +7,13 @@ import { Wallet } from '@ethersproject/wallet';
 
 dotenv.config()
 
-const mnemonic  = process.env.MNEMONIC || "";
+const mnemonic  = process.env.MNEMONIC || bip39.generateMnemonic();
 const pk1  = process.env.PRIVATE_KEY1 || "";
 const pk2  = process.env.PRIVATE_KEY2 || "";
 
 
 const message = 'HelloWorld';
 (async () => {
-  // const mnemonic = bip39.generateMnemonic();
-  // const mnemonic = 'rifle price ranch issue mosquito fortune equip limb black one decorate order';
-
   const ethWallet1 = EthWallet.getEthWalletFromMonenic(mnemonic, 0);
   const ethWallet2 = EthWallet.getEthWalletFromMonenic(mnemonic, 1);
 
